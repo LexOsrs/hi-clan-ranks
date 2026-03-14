@@ -1,5 +1,5 @@
 export async function onRequest(context) {
-  const { username } = context.params;
+  const username = context.params.catchall.join('/');
   const url = `https://api.runeprofile.com/profiles/${encodeURIComponent(username)}`;
 
   const response = await fetch(url, {

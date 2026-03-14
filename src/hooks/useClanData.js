@@ -28,7 +28,7 @@ async function fetchWOMGroup() {
 }
 
 async function fetchRuneProfile(username) {
-  const r = await fetch(`/api/runeprofile/profiles/${encodeURIComponent(username)}`);
+  const r = await fetch(`/api/runeprofile/profiles/${username.replace(/ /g, '%20')}`);
   if (!r.ok) return null;
   return r.json();
 }
