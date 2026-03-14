@@ -1,14 +1,14 @@
 export const RANKS = [
-  { name: 'Helper', points: 0, events: 0, color: '#7a7a7a', icon: '/ranks/Helper.png' },
-  { name: 'Sapphire', points: 500, events: 0, color: '#2e5fb8', icon: '/ranks/Sapphire.png' },
-  { name: 'Emerald', points: 1000, events: 0, color: '#2ecc40', icon: '/ranks/Emerald.png' },
-  { name: 'Ruby', points: 2000, events: 0, color: '#e74c3c', icon: '/ranks/Ruby.png' },
-  { name: 'Diamond', points: 3500, events: 0, color: '#a8d8ea', icon: '/ranks/Diamond.png' },
-  { name: 'Dragonstone', points: 5000, events: 1, color: '#af7ac5', icon: '/ranks/Dragonstone.png' },
-  { name: 'Onyx', points: 6500, events: 2, color: '#8a8a8a', icon: '/ranks/Onyx.png' },
-  { name: 'Zenyte', points: 8250, events: 3, color: '#e6a800', icon: '/ranks/Zenyte.png' },
-  { name: 'Beast', points: 10000, events: 4, color: '#c0392b', icon: '/ranks/Beast.png' },
-  { name: 'Wrath', points: 12500, events: 5, color: '#8e44ad', icon: '/ranks/Wrath_rune.png' },
+  { name: 'Helper', points: 0, events: 0, color: '#7a7a7a', icon: '/ranks/Clan_Helper.png' },
+  { name: 'Sapphire', points: 500, events: 0, color: '#2e5fb8', icon: '/ranks/Clan_Sapphire.png' },
+  { name: 'Emerald', points: 1000, events: 0, color: '#2ecc40', icon: '/ranks/Clan_Emerald.png' },
+  { name: 'Ruby', points: 2000, events: 0, color: '#e74c3c', icon: '/ranks/Clan_Ruby.png' },
+  { name: 'Diamond', points: 3500, events: 0, color: '#a8d8ea', icon: '/ranks/Clan_Diamond.png' },
+  { name: 'Dragonstone', points: 5000, events: 1, color: '#af7ac5', icon: '/ranks/Clan_Dragonstone.png' },
+  { name: 'Onyx', points: 6500, events: 2, color: '#8a8a8a', icon: '/ranks/Clan_Onyx.png' },
+  { name: 'Zenyte', points: 8250, events: 3, color: '#e6a800', icon: '/ranks/Clan_Zenyte.png' },
+  { name: 'Beast', points: 10000, events: 4, color: '#c0392b', icon: '/ranks/Clan_Beast.png' },
+  { name: 'Wrath', points: 12500, events: 5, color: '#8e44ad', icon: '/ranks/Clan_Wrath.png' },
 ];
 
 export const WOM_GROUP_ID = 1169;
