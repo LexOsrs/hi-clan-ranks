@@ -1,6 +1,10 @@
 export async function onRequest(context) {
-  const username = context.params.catchall.join('/');
-  const url = `https://api.runeprofile.com/profiles/${encodeURIComponent(username)}`;
+  // Extract username from the URL path directly to avoid double-encoding
+  const prefix = '/api/runeprofile/profiles/';
+  const path = new URL(context.request.url).pathname;
+  const raw = path.slice(prefix.length);
+  // raw is still URL-encoded from the browser, pass it straight through
+  const url = `https://api.runeprofile.com/profiles/${raw}`;
 
   const response = await fetch(url, {
     headers: { 'User-Agent': 'HardlyIron-ClanRanks/1.0' },
