@@ -127,18 +127,18 @@
 /* ========== Rank Badges ========== */
 .rank-badges {
   display: flex;
-  flex-wrap: wrap;
   gap: 6px;
-  justify-content: center;
   margin-bottom: 20px;
 }
 
 .rank-badge {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 6px 14px;
+  padding: 6px 4px;
   border-radius: 6px;
+  min-width: 0;
   border: 1px solid var(--border);
   background: var(--bg-surface);
   opacity: 0.35;
@@ -157,19 +157,31 @@
   transform: scale(1.05);
 }
 
+.badge-icon {
+  width: 24px;
+  height: 24px;
+  image-rendering: pixelated;
+  object-fit: contain;
+  filter: brightness(1.1);
+}
+
+.rank-badge:not(.achieved) .badge-icon {
+  filter: brightness(0.4) grayscale(1);
+}
+
 .badge-name {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--rank-color);
 }
 
 .badge-pts {
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: var(--text-dim);
 }
 
 .badge-evt {
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   color: var(--text-dim);
 }
 
@@ -197,15 +209,16 @@
   gap: 14px;
 }
 
-.rank-gem {
+.rank-gem-icon {
   width: 40px;
   height: 40px;
-  border-radius: 10px;
+  image-rendering: pixelated;
+  object-fit: contain;
   flex-shrink: 0;
 }
 
 .rank-label {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--text-dim);
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -228,7 +241,7 @@
 }
 
 .points-label {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--text-dim);
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -256,7 +269,7 @@
 }
 
 .stat-label {
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: var(--text-dim);
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -311,7 +324,7 @@
   background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: 6px;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
 }
 
 .chip-icon { font-size: 0.9rem; }
@@ -522,8 +535,8 @@
 }
 
 .auto-tag {
-  font-size: 0.65rem;
-  padding: 1px 7px;
+  font-size: 0.72rem;
+  padding: 2px 8px;
   border-radius: 4px;
   text-transform: uppercase;
   letter-spacing: 0.5px;

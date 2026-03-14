@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hardly Iron — Clan Points Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0d09;
+    --bg-surface: #1a1610;
+    --bg-elevated: #241f17;
+    --border: #3d3324;
+    --border-light: #5c4a32;
+    --gold: #ff981f;
+    --gold-dim: #b8860b;
+    --text: #c8b89a;
+    --text-dim: #8a7a60;
+    --text-bright: #e8d8b8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
+  .page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 32px 40px;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .header img {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 2px solid var(--border-light);
+  }
+
+  .header h1 {
+    font-size: 2.4rem;
+    color: var(--gold);
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 30px rgba(255,152,31,0.2);
+  }
+
+  .header p {
+    color: var(--text-dim);
+    font-size: 1.05rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    color: var(--gold);
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  h3 {
+    font-size: 1rem;
+    color: var(--gold-dim);
+    margin: 14px 0 6px;
+  }
+
+  /* Rank ladder — horizontal */
+  .rank-ladder {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+
+  .rank-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 6px 8px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-align: center;
+    gap: 4px;
+  }
+
+  .rank-icon {
+    width: 32px;
+    height: 32px;
+    image-rendering: pixelated;
+    object-fit: contain;
+  }
+
+  .rank-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  .rank-req {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    line-height: 1.3;
+  }
+
+  /* Main grid */
+  .main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+
+  .col { display: flex; flex-direction: column; gap: 16px; }
+
+  /* Tables */
+  .section { margin-bottom: 0; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  thead th {
+    text-align: left;
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  thead th:last-child { text-align: right; }
+
+  tbody td {
+    padding: 5px 10px;
+    border-bottom: 1px solid rgba(61,51,36,0.3);
+    font-size: 0.9rem;
+  }
+
+  tbody td:last-child {
+    text-align: right;
+    color: var(--gold);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  tbody tr:last-child td { border-bottom: none; }
+
+  .table-wrap {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .subtotal {
+    display: flex;
+    justify-content: flex-end;
+    padding: 6px 10px;
+    background: var(--bg-elevated);
+    border-top: 1px solid var(--border);
+    font-size: 0.9rem;
+    color: var(--text-dim);
+  }
+
+  .subtotal span {
+    color: var(--gold);
+    font-weight: 700;
+    margin-left: 6px;
+  }
+
+  .info-box {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  .info-box strong { color: var(--text-bright); }
+
+  /* Bottom row */
+  .bottom-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+
+  /* Grand total */
+  .grand-total {
+    text-align: center;
+    padding: 16px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+
+  .grand-total .label {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .grand-total .value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 0.85rem;
+  }
+
+  footer a { color: var(--gold-dim); text-decoration: none; }
+  footer a:hover { color: var(--gold); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <img src="/clan-logo.webp" alt="Hardly Iron">
+    <div>
+      <h1>Hardly Iron</h1>
+      <p>Clan Points &amp; Ranks Guide</p>
+    </div>
+  </div>
+
+  <!-- RANK LADDER — horizontal -->
+  <div class="rank-ladder">
+    <div class="rank-card">
+      <img class="rank-icon" src="/ranks/Helper.png" alt="">
+      <div class="rank-name" style="color:#7a7a7a">Helper</div>
+      <div class="rank-req">Join clan</div>
+    </div>
+    <div class="rank-card">
+      <img class="rank-icon" src="/ranks/Sapphire.png" alt="">
+      <div class="rank-name" style="color:#2e5fb8">Sapphire</div>
+      <div class="rank-req">500 pts</div>
+    </div>
+    <div class="rank-card">
+      <img class="rank-icon" src="/ranks/Emerald.png" alt="">
+      <div class="rank-name" style="color:#2ecc40">Emerald</div>
+      <div class="rank-req">1,000 pts</div>
+    </div>
+    <div class="rank-card">
+      <img class="rank-icon" src="/ranks/Ruby.png" alt="">
+      <div class="rank-name" style="color:#e74c3c">Ruby</div>
+      <div class="rank-req">2,000 pts</div>
+    </div>
+    <div class="rank-card">
+      <img class="rank-icon" src="/ranks/Diamond.png" alt="">
+      <div class="rank-name" style="color:#a8d8ea">Diamond</div>
+      <div class="rank-req">3,500 pts</div>
+    </div>
+    <div class="rank-card">
+      <img class="rank-icon" src="/ranks/Dragonstone.png" alt="">
+      <div class="rank-name" style="color:#af7ac5">Dragonstone</div>
+      <div class="rank-req">5,000 pts<br>+ 1 event</div>
+    </div>
+    <div class="rank-card">
+      <img class="rank-icon" src="/ranks/Onyx.png" alt="">
+      <div class="rank-name" style="color:#8a8a8a">Onyx</div>
+      <div class="rank-req">6,500 pts<br>+ 2 events</div>
+    </div>
+    <div class="rank-card">
+      <img class="rank-icon" src="/ranks/Zenyte.png" alt="">
+      <div class="rank-name" style="color:#e6a800">Zenyte</div>
+      <div class="rank-req">8,250 pts<br>+ 3 events</div>
+    </div>
+    <div class="rank-card">
+      <img class="rank-icon" src="/ranks/Beast.png" alt="">
+      <div class="rank-name" style="color:#c0392b">Beast</div>
+      <div class="rank-req">10,000 pts<br>+ 4 events</div>
+    </div>
+    <div class="rank-card">
+      <img class="rank-icon" src="/ranks/Wrath_rune.png" alt="">
+      <div class="rank-name" style="color:#8e44ad">Wrath</div>
+      <div class="rank-req">12,500 pts<br>+ 5 events</div>
+    </div>
+  </div>
+
+  <!-- 3-column grid -->
+  <div class="main-grid">
+
+    <!-- Column 1: Quests + Diaries -->
+    <div class="col">
+      <div class="section">
+        <h2>Quests — 802 pts</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Criteria</th><th>Pts</th></tr></thead>
+            <tbody>
+              <tr><td>Quest Points <em style="color:var(--text-dim)">(1:1)</em></td><td>333</td></tr>
+              <tr><td>Miniquests <em style="color:var(--text-dim)">(1:1)</em></td><td>19</td></tr>
+              <tr><td>Recipe for Disaster</td><td>50</td></tr>
+              <tr><td>Monkey Madness II</td><td>50</td></tr>
+              <tr><td>Dragon Slayer II</td><td>100</td></tr>
+              <tr><td>Song of the Elves</td><td>50</td></tr>
+              <tr><td>A Kingdom Divided</td><td>50</td></tr>
+              <tr><td>Desert Treasure II</td><td>100</td></tr>
+              <tr><td>While Guthix Sleeps</td><td>50</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Achievement Diaries — 892 pts</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Criteria</th><th>Pts</th></tr></thead>
+            <tbody>
+              <tr><td>Tasks Completed <em style="color:var(--text-dim)">(1:1)</em></td><td>492</td></tr>
+              <tr><td>All Easy Diaries</td><td>50</td></tr>
+              <tr><td>All Medium Diaries</td><td>50</td></tr>
+              <tr><td>All Hard Diaries</td><td>100</td></tr>
+              <tr><td>All Elite Diaries</td><td>200</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Skilling — 2,850 pts</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Total Level</th><th>Pts</th></tr></thead>
+            <tbody>
+              <tr><td>1,250</td><td>100</td></tr>
+              <tr><td>1,500</td><td>100</td></tr>
+              <tr><td>1,750</td><td>100</td></tr>
+              <tr><td>2,000</td><td>200</td></tr>
+              <tr><td>2,100</td><td>200</td></tr>
+              <tr><td>2,200</td><td>250</td></tr>
+              <tr><td>2,300</td><td>300</td></tr>
+              <tr><td>2,376</td><td>350</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="info-box" style="margin-top:6px">
+          Thresholds are <strong>cumulative</strong> — 2,200 total = 950 pts.<br>
+          <strong>EHP</strong>: 1 pt per hour, capped at <strong>1,250</strong>.
+        </div>
+      </div>
+    </div>
+
+    <!-- Column 2: PvM -->
+    <div class="col">
+      <div class="section">
+        <h2>PvM — 7,180 pts</h2>
+
+        <h3>Combat Achievements</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Tier</th><th>Threshold</th><th>Pts</th></tr></thead>
+            <tbody>
+              <tr><td colspan="2">CA Points <em style="color:var(--text-dim)">(1:1)</em></td><td>2,630</td></tr>
+              <tr><td>Easy</td><td>41+ pts</td><td>50</td></tr>
+              <tr><td>Medium</td><td>161+ pts</td><td>50</td></tr>
+              <tr><td>Hard</td><td>416+ pts</td><td>100</td></tr>
+              <tr><td>Elite</td><td>1,064+ pts</td><td>100</td></tr>
+              <tr><td>Master</td><td>1,904+ pts</td><td>200</td></tr>
+              <tr><td>Grandmaster</td><td>2,630 pts</td><td>300</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Items &amp; Unlocks</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Item</th><th>Pts</th></tr></thead>
+            <tbody>
+              <tr><td>Dragon defender</td><td>50</td></tr>
+              <tr><td>Fighter torso</td><td>50</td></tr>
+              <tr><td>Fire cape</td><td>100</td></tr>
+              <tr><td>Void Knight Set</td><td>50</td></tr>
+              <tr><td>Imbued god cape</td><td>50</td></tr>
+              <tr><td>Vorkath's head</td><td>50</td></tr>
+              <tr><td>Gauntlet cape</td><td>50</td></tr>
+              <tr><td>Deadeye &amp; Mystic vigour</td><td>50</td></tr>
+              <tr><td>Rite of vile transference</td><td>100</td></tr>
+              <tr><td>Torn prayer scroll</td><td>50</td></tr>
+              <tr><td>Thread of elidinis</td><td>50</td></tr>
+              <tr><td>Masori crafting kit</td><td>25</td></tr>
+              <tr><td>Menaphite ornament kit</td><td>25</td></tr>
+              <tr><td>Cursed phalanx</td><td>50</td></tr>
+              <tr><td>ToA Remnants <em style="color:var(--text-dim)">(all 5)</em></td><td>100</td></tr>
+              <tr><td>Xeric's guard</td><td>200</td></tr>
+              <tr><td>Sinhaza shroud tier 1</td><td>200</td></tr>
+              <tr><td>Icthlarin's shroud (tier 1)</td><td>200</td></tr>
+              <tr><td>Infernal cape</td><td>200</td></tr>
+              <tr><td>Dizana's quiver</td><td>200</td></tr>
+              <tr><td>Ancient blood ornament kit</td><td>300</td></tr>
+              <tr><td>Purifying sigil</td><td>300</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="info-box" style="margin-top:6px">
+          <strong>EHB</strong>: 1 pt per hour, capped at <strong>1,250</strong>.
+        </div>
+      </div>
+    </div>
+
+    <!-- Column 3: Misc + Events -->
+    <div class="col">
+      <div class="section">
+        <h2>Miscellaneous — 3,080 pts</h2>
+
+        <h3>Collection Log</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Tier</th><th>Items</th><th>Pts</th></tr></thead>
+            <tbody>
+              <tr><td>Bronze</td><td>100+</td><td>100</td></tr>
+              <tr><td>Iron</td><td>300+</td><td>100</td></tr>
+              <tr><td>Steel</td><td>500+</td><td>200</td></tr>
+              <tr><td>Black</td><td>700+</td><td>200</td></tr>
+              <tr><td>Mithril</td><td>900+</td><td>200</td></tr>
+              <tr><td>Adamant</td><td>1,000+</td><td>200</td></tr>
+              <tr><td>Rune</td><td>1,100+</td><td>250</td></tr>
+              <tr><td>Dragon</td><td>1,200+</td><td>250</td></tr>
+              <tr><td>Gilded</td><td>1,525+</td><td>500</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Music Cape</h3>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr><td>Music cape</td><td>100</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Clan Tenure</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Duration</th><th>Pts</th></tr></thead>
+            <tbody>
+              <tr><td>1 Month</td><td>30</td></tr>
+              <tr><td>3 Months</td><td>90</td></tr>
+              <tr><td>6 Months</td><td>180</td></tr>
+              <tr><td>1 Year</td><td>360</td></tr>
+              <tr><td>2 Years</td><td>720</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Event Participation</h2>
+        <div class="info-box">
+          Ranks from <strong>Dragonstone</strong> onward require event participation.<br><br>
+          <strong>What counts:</strong>
+          <ul style="margin:6px 0 0 18px;color:var(--text)">
+            <li><strong>Skill of the Week</strong> — earn min XP in that skill</li>
+            <li><strong>Boss of the Week</strong> — min kills of that boss</li>
+            <li><strong>Bingo / tile events</strong> — contribute to 3+ tiles</li>
+          </ul>
+          <br>
+          Events are retroactive with proof. Check your
+          <a href="https://wiseoldman.net" style="color:var(--gold)">Wise Old Man</a> competition history.
+        </div>
+      </div>
+
+      <div class="grand-total">
+        <div class="label">Maximum Possible Points</div>
+        <div class="value">14,804</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <a href="/">Rank Calculator</a> · <a href="https://discord.gg/hardly">Discord</a> · <a href="https://wiseoldman.net/groups/1169">Wise Old Man</a>
+  </footer>
+
+</div>
+</body>
+</html>

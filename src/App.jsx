@@ -113,6 +113,8 @@ function App() {
       </main>
 
       <footer className="app-footer">
+        <a href="/infographic.html">Points Guide</a>
+        <span>·</span>
         <a href="https://wiseoldman.net/groups/1169" target="_blank" rel="noreferrer">Wise Old Man</a>
         <span>·</span>
         <a href="https://discord.gg/hardly" target="_blank" rel="noreferrer">Discord</a>

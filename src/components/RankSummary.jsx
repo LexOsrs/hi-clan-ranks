@@ -40,7 +40,7 @@ export default function RankSummary({ totalPoints, events, currentRankIdx, categ
     >
       <div className="summary-top">
         <div className="summary-rank">
-          <div className="rank-gem" style={{ background: current.color, boxShadow: `0 0 20px ${current.color}44` }} />
+          <img src={current.icon} alt={current.name} className="rank-gem-icon" />
           <div>
             <div className="rank-label">Current Rank</div>
             <div className="rank-name" style={{ color: current.color }}>{current.name}</div>

@@ -19,6 +19,7 @@ export default function RankBadges({ currentRankIdx }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.04 }}
           >
+            <img src={rank.icon} alt={rank.name} className="badge-icon" />
             <span className="badge-name">{rank.name}</span>
             <span className="badge-pts">{rank.points.toLocaleString()}</span>
             {rank.events > 0 && <span className="badge-evt">+{rank.events} evt</span>}
