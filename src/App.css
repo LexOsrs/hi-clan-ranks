@@ -633,7 +633,8 @@
 
   .summary-stats { width: 100%; justify-content: space-between; }
 
-  .rank-badge { padding: 4px 8px; }
+  .rank-badges { flex-wrap: wrap; }
+  .rank-badge { flex: 0 0 calc(20% - 5px); padding: 4px 8px; }
   .badge-name { font-size: 0.7rem; }
 
   .item-row { padding: 8px 12px; gap: 8px; }
