@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #0f0d09;
+  --bg-surface: #1a1610;
+  --bg-elevated: #241f17;
+  --bg-input: #12100b;
+  --border: #3d3324;
+  --border-light: #5c4a32;
+  --gold: #ff981f;
+  --gold-dim: #b8860b;
+  --gold-glow: rgba(255, 152, 31, 0.15);
+  --text: #c8b89a;
+  --text-dim: #8a7a60;
+  --text-bright: #e8d8b8;
+  --green: #4ade80;
+  --green-dim: rgba(74, 222, 128, 0.15);
+  --red: #f87171;
+  --red-dim: rgba(248, 113, 113, 0.1);
+  --blue: #60a5fa;
+
+  font-family: 'EB Garamond', Georgia, 'Times New Roman', serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255,152,31,0.04) 0%, transparent 60%),
+    var(--bg);
+}
+
+#root {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+::selection {
+  background: var(--gold-dim);
+  color: var(--bg);
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border-light); }
